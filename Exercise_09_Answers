@@ -1,0 +1,28 @@
+#Question 1
+
+#read data from NEA Change vs Fat gain file
+sd <- read.csv("IBC_Exercise_09_Scatterplot_Data.csv")
+
+#create scatterplot
+plot(sd[,1], sd[,2], type="p", xlab="NEA Change (Cal)", ylab="Fat Gain (kg)")
+
+#add trendline
+abline(lm(sd[,2] ~ sd[,1], data=sd), col = "blue")
+
+
+
+#Question 2
+library(ggplot2)
+dat <- read.csv("data.txt")
+
+#barplot
+ggplot(dat, mapping = aes(x=region, y=observations)) + geom_bar(mapping = aes(fill=region), data = dat, stat = "summary", fun.y = "mean") + theme_classic()
+
+#scatterplot
+ggplot(dat, mapping = aes(x=region, y=observations)) + geom_jitter() + theme_classic()
+
+#The barplot and scatterplot do provide different insights into the data.
+#The barplot shows that the means of the four populations are approximately equivalent, at around 15.
+#However, the scatterplot shows that the observations are distributed very differently within each population.
+#For example, the range of observations in the east region is approximately 0 to 35, while the range of those in the north region is from about 13 to 17.
+#The barplot does not reflect these differences among the groups.
